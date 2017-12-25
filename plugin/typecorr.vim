@@ -20,10 +20,14 @@ let s:count = 0
 
 " Openrelatedfile
 
-if !hasmapto('<Plug>TypecorrOpenrelatedfile')
-  map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedtestfile
-  map <unique> <Leader>gs  <Plug>TypecorrOpenrelatedsourcefile
-  map <unique> <Leader>gh  <Plug>TypecorrOpenrelatedheaderfile
+if !hasmapto('<Plug>TypecorrOpenrelatedtestfile')
+  map <unique> <Leader>t  <Plug>TypecorrOpenrelatedtestfile
+endif
+if !hasmapto('<Plug>TypecorrOpenrelatedsourcefile')
+  map <unique> <Leader>s  <Plug>TypecorrOpenrelatedsourcefile
+endif
+if !hasmapto('<Plug>TypecorrOpenrelatedheaderfile')
+  map <unique> <Leader>h  <Plug>TypecorrOpenrelatedheaderfile
 endif
 noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedsourcefile  <SID>Openrelatedsourcefile
