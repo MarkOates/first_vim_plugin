@@ -21,13 +21,13 @@ let s:count = 0
 " Openrelatedfile
 
 if !hasmapto('<Plug>TypecorrOpenrelatedtestfile')
-  map <unique> <Leader>t  <Plug>TypecorrOpenrelatedtestfile
+  map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedtestfile
 endif
 if !hasmapto('<Plug>TypecorrOpenrelatedsourcefile')
-  map <unique> <Leader>s  <Plug>TypecorrOpenrelatedsourcefile
+  map <unique> <Leader>gs  <Plug>TypecorrOpenrelatedsourcefile
 endif
 if !hasmapto('<Plug>TypecorrOpenrelatedheaderfile')
-  map <unique> <Leader>h  <Plug>TypecorrOpenrelatedheaderfile
+  map <unique> <Leader>gh  <Plug>TypecorrOpenrelatedheaderfile
 endif
 noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedsourcefile  <SID>Openrelatedsourcefile
