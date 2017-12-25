@@ -21,11 +21,11 @@ let s:count = 0
 " Openrelatedfile
 
 if !hasmapto('<Plug>TypecorrOpenrelatedfile')
-  map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedfile
+  map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedtestfile
 endif
-noremap <unique> <script> <Plug>TypecorrOpenrelatedfile  <SID>Openrelatedfile
+noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
 
-noremap <SID>Openrelatedfile  :call <SID>Openrelatedfile("test")<CR>
+noremap <SID>Openrelatedtestfile  :call <SID>Openrelatedfile("test")<CR>
 
 function s:Openrelatedfile(type)
   let basename = expand('%:t:r')
