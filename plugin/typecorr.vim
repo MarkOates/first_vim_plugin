@@ -18,6 +18,35 @@ let s:count = 0
 " Map key things
 "
 
+" Openrelatedfile
+
+if !hasmapto('<Plug>TypecorrOpenrelatedfile')
+  map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedfile
+endif
+noremap <unique> <script> <Plug>TypecorrOpenrelatedfile  <SID>Openrelatedfile
+
+noremap <SID>Openrelatedfile  :call <SID>Openrelatedfile("test")<CR>
+
+function s:Openrelatedfile(type)
+  let basename = expand('%:t:r')
+  let extension = expand('%:e')
+
+  if a:type == "test"
+    let filename_to_find = basename . "Test.cpp"
+  elseif a:type == "source"
+    let filename_to_find = basename . ".cpp"
+  elseif a:type == "header"
+    let filename_to_find = basename . ".h"
+  else
+    echo "Error: unrecognized related file type"
+    return
+  endif
+
+"  echo filename_to_find
+  let found_filename = split(globpath(".", "**/" . filename_to_find), '\n')[0]
+  exe ":e " . found_filename
+endfunction
+
 " Add
 
 if !hasmapto('<Plug>TypecorrAdd')
