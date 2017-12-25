@@ -57,7 +57,7 @@ function s:Openrelatedfile(type)
   if len(l:found_filenames) == 0
     echom "Error: filename \"" . l:filename_to_find . "\" not found."
   else
-    exe ":tabnew " . l:found_filenames[0]
+    exe ":e " . l:found_filenames[0]
   endif
 endfunction
 
