@@ -22,29 +22,36 @@ let s:count = 0
 
 if !hasmapto('<Plug>TypecorrOpenrelatedfile')
   map <unique> <Leader>gt  <Plug>TypecorrOpenrelatedtestfile
+  map <unique> <Leader>gs  <Plug>TypecorrOpenrelatedsourcefile
+  map <unique> <Leader>gh  <Plug>TypecorrOpenrelatedheaderfile
 endif
 noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
+noremap <unique> <script> <Plug>TypecorrOpenrelatedsourcefile  <SID>Openrelatedsourcefile
+noremap <unique> <script> <Plug>TypecorrOpenrelatedheaderfile  <SID>Openrelatedheaderfile
 
 noremap <SID>Openrelatedtestfile  :call <SID>Openrelatedfile("test")<CR>
+noremap <SID>Openrelatedsourcefile  :call <SID>Openrelatedfile("source")<CR>
+noremap <SID>Openrelatedheaderfile  :call <SID>Openrelatedfile("header")<CR>
 
 function s:Openrelatedfile(type)
-  let basename = expand('%:t:r')
-  let extension = expand('%:e')
+  let l:basename = expand('%:t:r')
+  let l:extension = expand('%:e')
+  let l:basename = substitute(l:basename, "Test", "", "")
 
   if a:type == "test"
-    let filename_to_find = basename . "Test.cpp"
+    let l:filename_to_find = l:basename . "Test.cpp"
   elseif a:type == "source"
-    let filename_to_find = basename . ".cpp"
+    let l:filename_to_find = l:basename . ".cpp"
   elseif a:type == "header"
-    let filename_to_find = basename . ".h"
+    let l:filename_to_find = l:basename . ".h"
   else
     echo "Error: unrecognized related file type"
     return
   endif
 
 "  echo filename_to_find
-  let found_filename = split(globpath(".", "**/" . filename_to_find), '\n')[0]
-  exe ":e " . found_filename
+  let l:found_filename = split(globpath(".", "**/" . l:filename_to_find), '\n')[0]
+  exe ":tabnew " . l:found_filename
 endfunction
 
 " Add
