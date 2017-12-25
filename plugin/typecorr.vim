@@ -11,27 +11,30 @@ let g:loaded_typecorr = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-iabbrev c class
-iabbrev s std::string
-iabbrev i int
-iabbrev v std::vector
-iabbrev st static
-iabbrev r return
-iabbrev d def
-iabbrev e end
-iabbrev # #include
-iabbrev f
-	\ float
-let s:count = 4
+let s:count = 0
+
+
+"
+" Map key things
+"
+
+" Add
 
 if !hasmapto('<Plug>TypecorrAdd')
   map <unique> <Leader>a  <Plug>TypecorrAdd
 endif
 noremap <unique> <script> <Plug>TypecorrAdd  <SID>Add
 
+noremap <SID>Add  :call <SID>Add(expand("<cword>"), 1)<CR>
+
+" + menu commands
+
 noremenu <script> Plugin.Add\ Correction      <SID>Add
 
-noremap <SID>Add  :call <SID>Add(expand("<cword>"), 1)<CR>
+
+"
+" Functions
+"
 
 function s:Add(from, correct)
   let to = input("type the correction for " . a:from . ": ")
