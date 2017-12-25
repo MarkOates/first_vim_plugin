@@ -11,11 +11,17 @@ let g:loaded_typecorr = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-iabbrev teh the
-iabbrev otehr other
-iabbrev wnat want
-iabbrev synchronisation
-	\ synchronization
+iabbrev c class
+iabbrev s std::string
+iabbrev i int
+iabbrev v std::vector
+iabbrev st static
+iabbrev r return
+iabbrev d def
+iabbrev e end
+iabbrev # #include
+iabbrev f
+	\ float
 let s:count = 4
 
 if !hasmapto('<Plug>TypecorrAdd')
