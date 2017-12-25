@@ -3,13 +3,13 @@
 This plugin makes it easier to navigate your cpp codebase, making it simple to go flip between corresponding source/header/test files.
 
 Mappings:
-<Leader>gt   or   <Plug>TypecorrOpenrelatedtestfile
+<Leader>t   or   <Plug>TypecorrOpenrelatedtestfile
 	Opens the corresponding test file for the current file in the buffer in a new tab.  Expects filenames to follow the expected naming convention.
 
-<Leader>gs   or   <Plug>TypecorrOpenrelatedsourcefile
+<Leader>s   or   <Plug>TypecorrOpenrelatedsourcefile
 	Opens the corresponding source file for the current file in the buffer in a new tab.  Expects filenames to follow the expected naming convention.
 
-<Leader>gt   or   <Plug>TypecorrOpenrelatedheaderfile
+<Leader>t   or   <Plug>TypecorrOpenrelatedheaderfile
 	Opens the corresponding header file for the current file in the buffer in a new tab.  Expects filenames to follow the expected naming convention.
 
 						*typecorr-settings*
