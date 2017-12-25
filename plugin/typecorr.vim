@@ -45,13 +45,16 @@ function s:Openrelatedfile(type)
   elseif a:type == "header"
     let l:filename_to_find = l:basename . ".h"
   else
-    echo "Error: unrecognized related file type"
+    echom "Error: unrecognized related file type"
     return
   endif
 
-"  echo filename_to_find
-  let l:found_filename = split(globpath(".", "**/" . l:filename_to_find), '\n')[0]
-  exe ":tabnew " . l:found_filename
+  let l:found_filenames = split(globpath(".", "**/" . l:filename_to_find), '\n')
+  if len(l:found_filenames) == 0
+    echom "Error: filename \"" . l:filename_to_find . "\" not found."
+  else
+    exe ":tabnew " . l:found_filenames[0]
+  endif
 endfunction
 
 " Add
