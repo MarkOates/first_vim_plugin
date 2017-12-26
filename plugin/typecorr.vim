@@ -40,7 +40,7 @@ noremap <SID>Openrelatedheaderfile  :call <SID>Openrelatedfile("header")<CR>
 function s:Openrelatedfile(type)
   let l:basename = expand('%:t:r')
   let l:extension = expand('%:e')
-  let l:basename = substitute(l:basename, "Test", "", "")
+  let l:basename = substitute(l:basename, "Test$", "", "")
 
   if a:type == "test"
     let l:filename_to_find = l:basename . "Test.cpp"
