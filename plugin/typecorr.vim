@@ -47,7 +47,7 @@ function s:Openrelatedfile(type)
   elseif a:type == "source"
     let l:filename_to_find = l:basename . ".cpp"
   elseif a:type == "header"
-    let l:filename_to_find = l:basename . ".h"
+    let l:filename_to_find = l:basename . ".hpp"
   else
     echom "Error: unrecognized related file type"
     return
