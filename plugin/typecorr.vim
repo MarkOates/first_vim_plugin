@@ -46,11 +46,11 @@ function s:Openrelatedfile(type)
   let l:current_file_full_filename = @%
   let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -B"
 
-  echom "Current full filename: " . l:current_file_full_filename
-  echom "Extraction command: " . l:extraction_command
+  " echom "Current full filename: " . l:current_file_full_filename
+  " echom "Extraction command: " . l:extraction_command
 
   let l:program_usage = system(l:extraction_command)
-  echom "BASENAME EXTRACTED: " . l:program_usage
+  " echom "BASENAME EXTRACTED: " . l:program_usage
 
   if a:type == "test"
     let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -t"
@@ -69,11 +69,11 @@ function s:Openrelatedfile(type)
     return
   endif
 
-  "if l:filename_to_open == 0
-    "echom "Error: filename \"" . l:filename_to_open . "\" not found."
-  "else
+  if filereadable(l:filename_to_open)
     exe ":e " . l:filename_to_open
-  "endif
+  else
+    echom "Error: filename \"" . l:filename_to_open . "\" not found."
+  endif
 endfunction
 
 " Add
