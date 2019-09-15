@@ -29,13 +29,18 @@ endif
 if !hasmapto('<Plug>TypecorrOpenrelatedheaderfile')
   map <unique> <Leader>gh  <Plug>TypecorrOpenrelatedheaderfile
 endif
+if !hasmapto('<Plug>TypecorrOpenrelatedquintfile')
+  map <unique> <Leader>gq  <Plug>TypecorrOpenrelatedquintfile
+endif
 noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedsourcefile  <SID>Openrelatedsourcefile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedheaderfile  <SID>Openrelatedheaderfile
+noremap <unique> <script> <Plug>TypecorrOpenrelatedquintfile  <SID>Openrelatedquintfile
 
 noremap <SID>Openrelatedtestfile  :call <SID>Openrelatedfile("test")<CR>
 noremap <SID>Openrelatedsourcefile  :call <SID>Openrelatedfile("source")<CR>
 noremap <SID>Openrelatedheaderfile  :call <SID>Openrelatedfile("header")<CR>
+noremap <SID>Openrelatedquintfile  :call <SID>Openrelatedfile("quint")<CR>
 
 function s:Openrelatedfile(type)
   let l:basename = expand('%:t:r')
@@ -48,6 +53,8 @@ function s:Openrelatedfile(type)
     let l:filename_to_find = l:basename . ".cpp"
   elseif a:type == "header"
     let l:filename_to_find = l:basename . ".hpp"
+  elseif a:type == "quint"
+    let l:filename_to_find = l:basename . ".q.yml"
   else
     echom "Error: unrecognized related file type"
     return
