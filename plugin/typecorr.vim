@@ -43,29 +43,37 @@ noremap <SID>Openrelatedheaderfile  :call <SID>Openrelatedfile("header")<CR>
 noremap <SID>Openrelatedquintfile  :call <SID>Openrelatedfile("quint")<CR>
 
 function s:Openrelatedfile(type)
-  let l:basename = expand('%:t:r')
-  let l:extension = expand('%:e')
-  let l:basename = substitute(l:basename, "Test$", "", "")
+  let l:current_file_full_filename = @%
+  let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -B"
+
+  echom "Current full filename: " . l:current_file_full_filename
+  echom "Extraction command: " . l:extraction_command
+
+  let l:program_usage = system(l:extraction_command)
+  echom "BASENAME EXTRACTED: " . l:program_usage
 
   if a:type == "test"
-    let l:filename_to_find = l:basename . "Test.cpp"
+    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -t"
+    let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "source"
-    let l:filename_to_find = l:basename . ".cpp"
+    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -s"
+    let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "header"
-    let l:filename_to_find = l:basename . ".hpp"
+    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -h"
+    let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "quint"
-    let l:filename_to_find = l:basename . ".q.yml"
+    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -q"
+    let l:filename_to_open = system(l:extraction_command)
   else
     echom "Error: unrecognized related file type"
     return
   endif
 
-  let l:found_filenames = split(globpath(".", "**/" . l:filename_to_find), '\n')
-  if len(l:found_filenames) == 0
-    echom "Error: filename \"" . l:filename_to_find . "\" not found."
-  else
-    exe ":e " . l:found_filenames[0]
-  endif
+  "if l:filename_to_open == 0
+    "echom "Error: filename \"" . l:filename_to_open . "\" not found."
+  "else
+    exe ":e " . l:filename_to_open
+  "endif
 endfunction
 
 " Add
