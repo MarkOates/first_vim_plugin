@@ -32,15 +32,20 @@ endif
 if !hasmapto('<Plug>TypecorrOpenrelatedquintfile')
   map <unique> <Leader>gq  <Plug>TypecorrOpenrelatedquintfile
 endif
+if !hasmapto('<Plug>TypecorrOpenrelatedexamplefile')
+  map <unique> <Leader>ge  <Plug>TypecorrOpenrelatedexamplefile
+endif
 noremap <unique> <script> <Plug>TypecorrOpenrelatedtestfile  <SID>Openrelatedtestfile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedsourcefile  <SID>Openrelatedsourcefile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedheaderfile  <SID>Openrelatedheaderfile
 noremap <unique> <script> <Plug>TypecorrOpenrelatedquintfile  <SID>Openrelatedquintfile
+noremap <unique> <script> <Plug>TypecorrOpenrelatedexamplefile  <SID>Openrelatedexamplefile
 
 noremap <SID>Openrelatedtestfile  :call <SID>Openrelatedfile("test")<CR>
 noremap <SID>Openrelatedsourcefile  :call <SID>Openrelatedfile("source")<CR>
 noremap <SID>Openrelatedheaderfile  :call <SID>Openrelatedfile("header")<CR>
 noremap <SID>Openrelatedquintfile  :call <SID>Openrelatedfile("quint")<CR>
+noremap <SID>Openrelatedexamplefile  :call <SID>Openrelatedfile("example")<CR>
 
 function s:Openrelatedfile(type)
   let l:current_file_full_filename = @%
@@ -63,6 +68,9 @@ function s:Openrelatedfile(type)
     let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "quint"
     let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -q"
+    let l:filename_to_open = system(l:extraction_command)
+  elseif a:type == "example"
+    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -e"
     let l:filename_to_open = system(l:extraction_command)
   else
     echom "Error: unrecognized related file type"
