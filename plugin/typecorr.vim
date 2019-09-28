@@ -84,6 +84,8 @@ function s:Openrelatedfile(type)
   endif
 endfunction
 
+" This is just an added comment to test hash version checking
+
 " Add
 
 if !hasmapto('<Plug>TypecorrAdd')
