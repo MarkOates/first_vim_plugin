@@ -49,7 +49,7 @@ noremap <SID>Openrelatedexamplefile  :call <SID>Openrelatedfile("example")<CR>
 
 function s:Openrelatedfile(type)
   let l:current_file_full_filename = @%
-  let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -B"
+  let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -B"
 
   " echom "Current full filename: " . l:current_file_full_filename
   " echom "Extraction command: " . l:extraction_command
@@ -58,19 +58,19 @@ function s:Openrelatedfile(type)
   " echom "BASENAME EXTRACTED: " . l:program_usage
 
   if a:type == "test"
-    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -t"
+    let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -t"
     let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "source"
-    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -s"
+    let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -s"
     let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "header"
-    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -h"
+    let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -h"
     let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "quint"
-    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -q"
+    let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -q"
     let l:filename_to_open = system(l:extraction_command)
   elseif a:type == "example"
-    let l:extraction_command = "/Users/markoates/Repos/ncurses-art/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -e"
+    let l:extraction_command = "/Users/markoates/Repos/blast/bin/programs/project_filename_generator -x" . l:current_file_full_filename . " -e"
     let l:filename_to_open = system(l:extraction_command)
   else
     echom "Error: unrecognized related file type"
